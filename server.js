@@ -10,12 +10,12 @@ const wss = new WebSocket.Server({ server });
 const players = {};
 
 app.get('/', (req, res) => {
-    res.send('StreetRunner Server চালু আছে!');
+    res.send('StreetRunner Server running');
 });
 
 wss.on('connection', (ws) => {
     const playerId = Date.now().toString();
-    console.log(`প্লেয়ার যুক্ত হয়েছে: ${playerId}`);
+    console.log(`Player connected: ${playerId}`);
 
     players[playerId] = { id: playerId, lat: 0, lng: 0, hp: 100 };
 
@@ -83,5 +83,5 @@ wss.on('connection', (ws) => {
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-    console.log(`StreetRunner Server চালু আছে Port: ${PORT}`);
+    console.log(`StreetRunner Server running on Port: ${PORT}`);
 });
